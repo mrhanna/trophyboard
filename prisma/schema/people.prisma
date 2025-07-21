@@ -1,0 +1,104 @@
+model Tenant {
+    id String @id @default(cuid())
+
+    name String
+
+    participants Participant[]
+    guardians    Guardian[]
+    providers    Provider[]
+    pods         Pod[]
+
+    roles Role[]
+}
+
+model Participant {
+    id String @id @default(cuid())
+
+    tenant   Tenant @relation(fields: [tenantId], references: [id])
+    tenantId String
+
+    identity   Identity? @relation(fields: [identityId], references: [id])
+    identityId String?
+
+    guardians Guardian[]
+
+    fullName      String
+    preferredName String?
+    dob           DateTime
+
+    podParticipants PodParticipant[]
+}
+
+model Guardian {
+    id String @id @default(cuid())
+
+    tenant   Tenant @relation(fields: [tenantId], references: [id])
+    tenantId String
+
+    identity   Identity? @relation(fields: [identityId], references: [id])
+    identityId String?
+
+    children Participant[]
+
+    fullName      String
+    preferredName String?
+}
+
+model Provider {
+    id String @id @default(cuid())
+
+    tenant   Tenant @relation(fields: [tenantId], references: [id])
+    tenantId String
+
+    identity   Identity? @relation(fields: [identityId], references: [id])
+    identityId String?
+
+    fullName      String
+    preferredName String?
+
+    role     Role   @relation(fields: [tenantId, roleName], references: [tenantId, name])
+    roleName String
+}
+
+model Pod {
+    id String @id @default(cuid())
+
+    tenant   Tenant @relation(fields: [tenantId], references: [id])
+    tenantId String
+
+    name        String
+    description String?
+
+    podParticipants PodParticipant[]
+    podGroups       PodGroup[]
+}
+
+model PodParticipant {
+    pod   Pod    @relation(fields: [podId], references: [id])
+    podId String
+
+    participant   Participant @relation(fields: [participantId], references: [id])
+    participantId String
+
+    @@id([podId, participantId])
+}
+
+model PodGroup {
+    id String @id @default(cuid())
+
+    name        String
+    description String?
+
+    pods Pod[]
+}
+
+model Identity {
+    id String @id @default(cuid())
+
+    email    String
+    password String
+
+    participants Participant[]
+    Guardian     Guardian[]
+    Provider     Provider[]
+}

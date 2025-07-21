@@ -1,0 +1,11 @@
+model Role {
+    tenant   Tenant @relation(fields: [tenantId], references: [id])
+    tenantId String
+
+    name        String
+    permissions Json
+
+    providers Provider[]
+
+    @@id([tenantId, name])
+}

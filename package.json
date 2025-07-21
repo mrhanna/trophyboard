@@ -4,7 +4,8 @@
   "description": "TrophyBoard, a gamified student management platform.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bash": "docker compose exec api bash"
   },
   "keywords": [],
   "author": "Michael Hanna",
