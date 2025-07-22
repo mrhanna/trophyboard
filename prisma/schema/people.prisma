@@ -102,6 +102,8 @@ model Identity {
     email    String
     password String
 
+    globalRole GlobalRole @default(STANDARD)
+
     participants Participant[]
     Guardian     Guardian[]
     Provider     Provider[]

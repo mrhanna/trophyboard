@@ -1,11 +1,16 @@
 model Role {
     tenant   Tenant @relation(fields: [tenantId], references: [id])
-    tenantId String
+    tenantId String // the tenant for which this Role is defined
 
     name        String
     permissions Json
 
-    providers Provider[]
+    providers Provider[] //the providers who have this Role
 
     @@id([tenantId, name])
+}
+
+enum GlobalRole {
+    STANDARD
+    ADMIN
 }
