@@ -16,3 +16,12 @@ docker compose exec api bash
 # npm run dev   # and so on
 ```
 
+## Notes
+
+A human user has..
+
+Identity                one globally for signon
+
+ProviderProfile         one or zero per tenant
+ParticipantProfile      one or zero per tenant
+

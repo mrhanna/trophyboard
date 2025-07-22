@@ -1,7 +1,7 @@
 services:
   api:
     build: .
-    user: "${UID}:${GID}"
+    user: node
     ports:
       - "3000:3000"
     volumes:

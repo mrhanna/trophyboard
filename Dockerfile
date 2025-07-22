@@ -1,10 +1,12 @@
 FROM node:lts-slim
 
 WORKDIR /app
+RUN apt-get -y update && apt-get -y install openssl
 
 COPY . .
+RUN chown -R node:node /app
 
-RUN apt-get -y update && apt-get -y install openssl
+USER node
 RUN npm i
 
 CMD ["tail", "-f", "/dev/null"]
