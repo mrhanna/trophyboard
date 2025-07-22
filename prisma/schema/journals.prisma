@@ -1,0 +1,7 @@
+model JournalEntry {
+    postId  Int  @id @default(autoincrement())
+    content Json
+
+    journal   PodParticipant @relation(fields: [journalId], references: [id])
+    journalId String
+}
