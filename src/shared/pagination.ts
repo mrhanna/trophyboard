@@ -1,4 +1,4 @@
-import { Prisma } from "../../generated/prisma";
+import { Prisma } from '@prisma';
 
 type FindManyArgs<T extends keyof Prisma.TypeMap['model']> =
     Prisma.TypeMap['model'][T]['operations']['findMany']['args'];

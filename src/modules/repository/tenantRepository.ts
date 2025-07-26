@@ -1,5 +1,5 @@
-import { PrismaClient, Tenant } from '../../generated/prisma';
-import { PaginationOptions } from '../core/pagination';
+import { PrismaClient, Tenant } from '@prisma';
+import { PaginationOptions } from '@/shared/pagination';
 
 export function createTenantRepository(prisma: PrismaClient) {
     return {

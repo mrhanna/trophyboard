@@ -1,4 +1,4 @@
-import { Participant, PrismaClient } from '../../generated/prisma';
+import { Participant, PrismaClient } from '@prisma';
 
 export function createParticipantRepository(prisma: PrismaClient) {
     return {
