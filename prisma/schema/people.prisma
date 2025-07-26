@@ -7,6 +7,7 @@ model Tenant {
     guardians    Guardian[]
     providers    Provider[]
     pods         Pod[]
+    podGroups    PodGroup[]
 
     roles Role[]
 }
@@ -92,6 +93,9 @@ model PodGroup {
 
     name        String
     description String?
+
+    tenant   Tenant @relation(fields: [tenantId], references: [id])
+    tenantId String
 
     pods Pod[]
 }
