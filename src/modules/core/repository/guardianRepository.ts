@@ -1,4 +1,4 @@
-import { Guardian, PrismaClient } from '@prisma';
+import { Guardian, PrismaClient } from '@generated';
 
 export default function createGuardianRepository(prisma: PrismaClient) {
     return {
