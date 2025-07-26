@@ -9,4 +9,4 @@ RUN chown -R node:node /app
 USER node
 RUN npm i
 
-CMD ["tail", "-f", "/dev/null"]
+CMD npm run dev
