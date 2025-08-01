@@ -11,7 +11,13 @@ Drawing inspiration from a decade of experience of teaching saxophone to grade s
 
 This is intended to be a better and more fully-featured remake of a similar project that I wrote around 2022 called 'LessonLog' using Symfony/PHP.
 
-## Roadmap
+## Architectural Notes
+
+This repository provides the backend API for a future Next.js web frontend and mobile application. The current stack includes **Express**, **PostgreSQL**, and **Prisma**.
+
+The architecture follows a **modular monolith approach**. Each module is designed to be **self-contained**, **independently testable**, and optionally **pluggable** into the core system. Modules define their own models, services, controllers, and routes, and communicate via a **centralized event bus**, emitting and handling events according to their own responsibilities.
+
+This modular structure enables greater configurability on a per-tenant basis. For example, a tenant might enable scheduling, billing, neither, or both. These modules are designed to operate independently but can interoperate when enabled together, allowing, for instance, scheduling events to trigger billing actions, and vice versa.
 
 ## Development
 
